@@ -1,0 +1,109 @@
+import "./Header.css";
+import { assets } from "../../assets/assets";
+import { IoPeopleCircle } from "react-icons/io5";
+import { BiSolidHeartCircle } from "react-icons/bi";
+import { BiSolidRightArrow } from "react-icons/bi";
+import { ImCross } from "react-icons/im";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useRef, React } from "react";
+
+const Header = () => {
+  return (
+    <div className="flex">
+      <div className="diagonal-lines"></div>
+      <div className="heading relative top-13 right-3">
+        <div>
+          <h1 className="text-6xl relative left-25 top-50 font-bold heading1">
+            Find The Right <br /> Influencer For Your <br /> Business
+          </h1>
+        </div>
+        <p className="relative left-25 top-57 text-gray-600 heading-text">
+        Ideas spark, creators ignite. Innovation thrives where vision meets craft. Build <br/>express, and inspire—the world moves forward on the dreams we dare to shape.
+        </p>
+        <button className="py-4 px-10 bg-gradient-to-br from-pink-400 to-purple-500 cursor-pointer rounded-4xl relative top-66 left-24  text-white font-bold hover:scale-[1.1] transition-transform">
+          Discover More
+        </button>
+
+        <div className="h-17 w-50 bg-white relative top-83 left-178 upperbox1 z-10 statisfied-box">
+          <div className="flex relative right-1">
+            <BiSolidHeartCircle className="h-13 w-13 relative left-3.5 top-2 text-[#9B59B6]" />
+            <div className="flex flex-col">
+              <p className="number relative left-6.5 top-2">99.99%</p>
+              <p className="text-gray-700 relative left-6 top-1.5 upperbox1-text">
+                Statisfied Users
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex relative left-162 bottom-45 z-10 text-[#2ECC71] triangles">
+          <BiSolidRightArrow className="arrows relative left-6" />
+          <BiSolidRightArrow className="arrows relative left-5" />
+          <BiSolidRightArrow className="arrows relative left-4" />
+          <BiSolidRightArrow className="arrows relative left-3" />
+          <BiSolidRightArrow className="arrows relative left-2" />
+          <BiSolidRightArrow className="arrows relative left-1" />
+        </div>
+      </div>
+
+      <div className="flex relative top-38.5 left-36 gap-6">
+        <div className="relative bottom-1">
+          <div className="h-75 w-70 px-2.5 py-2.5 bg-[#FFFFFF] box1">
+            <div className="h-70 w-65 relative innerbox1 overflow-hidden">
+              <img
+                className="w-full h-full object-fill"
+                src={assets.pic1}
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="h-75 w-70 bg-[#FFFFFF] relative top-5 overflow-hidden box2">
+            <div className="h-70 w-65 relative top-2.5 left-2.5 overflow-hidden innerbox2">
+              <img
+                className="w-full h-full object-fill"
+                src={assets.pic2}
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div className="">
+          <div className="h-75 w-70 bg-[#FFFFFF] relative bottom-5 overflow-hidden box3">
+            <div className="h-70 w-65 relative top-2.5 left-2.5 overflow-hidden innerbox3">
+              <img
+                className="w-full h-full object-fill"
+                src={assets.pic4}
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div className="h-75 w-70 bg-[#FFFFFF] overflow-hidden box4">
+            <div className="h-70 w-65 bg-amber-950 relative top-2.5 left-2.5 overflow-hidden innerbox4">
+              <img
+                className="w-full h-full object-fill"
+                src={assets.pic1}
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-17 w-54.5 bg-white relative top-88 right-3 upperbox1">
+        <div className="flex relative right-1">
+          <IoPeopleCircle className="h-13 w-13 relative left-3.5 top-2 text-[#9B59B6]" />
+          <div className="flex flex-col">
+            <p className="number relative left-5.5 top-2">4156+</p>
+            <p className="text-gray-700 relative left-5.5 top-1.5 upperbox1-text">
+              Popular Influencer
+            </p>
+            <ImCross className="cross relative top-35 left-18 text-[#9B59B6] size-18" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

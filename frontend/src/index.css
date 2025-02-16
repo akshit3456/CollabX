@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+html,body{
+    background-image: url(https://web.moxcreative.com/influozy/wp-content/uploads/sites/26/2023/03/15782147_5671773.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
