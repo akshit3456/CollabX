@@ -49,20 +49,24 @@
     box-shadow: 0px 0px 0px -1px rgba(0, 0, 0, 0.5);
 }
 
-.upperbox1{
+.statisfied-box{
     border-radius: 50px;
     box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.5);
 }
 
-.upperbox1 .number{
+.influencer-box{
+    border-radius: 50px;
+    box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.5);
+}
+
+.number{
     font-size: 20px;
     color: #3498DA;
     font-weight:bold;
 }
 
-.upperbox1-text{
+.influencer-box-text,.statisfied-box-text{
     font-size: 88%;
-
 }
 
 .arrows {
@@ -72,6 +76,10 @@
 .cross{
     font-size: 65px;
     box-sizing: border-box;
+    box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.5);
+}
+
+.people-icon{
     box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.5);
 }
 

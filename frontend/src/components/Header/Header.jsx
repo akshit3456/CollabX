@@ -4,11 +4,92 @@ import { IoPeopleCircle } from "react-icons/io5";
 import { BiSolidHeartCircle } from "react-icons/bi";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { ImCross } from "react-icons/im";
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef, React } from "react";
 
 const Header = () => {
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    // First part (All elements animate together)
+    tl.from(
+      ".heading1",
+      {
+        opacity: 0,
+        y: 100, // Moves down from 200px
+        duration: 1,
+      },
+      "start"
+    ).from(
+      [".box1", ".box2", ".box3", ".box4"],
+      {
+        opacity: 0,
+        duration: 1,
+        x: (i, target) =>
+          target.classList.contains("box1")
+            ? -200
+            : target.classList.contains("box4")
+            ? 200
+            : 0,
+        y: (i, target) =>
+          target.classList.contains("box2")
+            ? 200
+            : target.classList.contains("box3")
+            ? -200
+            : 0,
+      },
+      "start"
+    );
+
+    // Second part (All elements animate together with a shorter delay after first part)
+    tl.from(
+      [
+        ".heading-text",
+        ".triangles",
+        ".influencer-box",
+        ".statisfied-box",
+        ".diagonal-lines",
+      ],
+      {
+        opacity: 0,
+        duration: 1,
+        x: (i, target) =>
+          target.classList.contains("triangles")
+            ? -90
+            : target.classList.contains("influencer-box") ||
+              target.classList.contains("statisfied-box")
+            ? 90
+            : 0,
+        y: (i, target) => (target.classList.contains("heading-text") ? 90 : 0),
+        scale: (i, target) =>
+          target.classList.contains("diagonal-lines") ? 0 : 1,
+      },
+      "-=0.7"
+    ); // Starts 0.7s earlier (overlaps slightly with first part for faster transition)
+
+    // Cross animation (Happens almost immediately after second part)
+    tl.from(
+      ".cross",
+      {
+        opacity: 0,
+        y: 70,
+        rotate: 120,
+        duration: 0.8, // Faster animation
+      },
+      "-=0.5"
+    ); // Overlaps slightly with second part
+
+    // Third part (All elements animate together with a very short delay)
+    tl.from(
+      ".discover-button",
+      {
+        opacity: 0,
+        duration: 0.8, // Faster appearance
+      },
+      "-=0.6"
+    ); // Starts 0.6s earlier to make the transition faster
+  });
   return (
     <div className="flex">
       <div className="diagonal-lines"></div>
@@ -19,18 +100,21 @@ const Header = () => {
           </h1>
         </div>
         <p className="relative left-25 top-57 text-gray-600 heading-text">
-        Ideas spark, creators ignite. Innovation thrives where vision meets craft. Build <br/>express, and inspire—the world moves forward on the dreams we dare to shape.
+          Ideas spark, creators ignite. Innovation thrives where vision meets
+          craft. Build <br />
+          express, and inspire—the world moves forward on the dreams we dare to
+          shape.
         </p>
-        <button className="py-4 px-10 bg-gradient-to-br from-pink-400 to-purple-500 cursor-pointer rounded-4xl relative top-66 left-24  text-white font-bold hover:scale-[1.1] transition-transform">
+        <button className="py-4 px-10 bg-gradient-to-br from-pink-400 to-purple-500 cursor-pointer rounded-4xl relative top-66 left-24  text-white font-bold hover:scale-[1.1] transition-transform discover-button">
           Discover More
         </button>
 
-        <div className="h-17 w-50 bg-white relative top-83 left-178 upperbox1 z-10 statisfied-box">
+        <div className="h-17 w-50 bg-white relative top-83 left-178 z-10 statisfied-box">
           <div className="flex relative right-1">
             <BiSolidHeartCircle className="h-13 w-13 relative left-3.5 top-2 text-[#9B59B6]" />
             <div className="flex flex-col">
               <p className="number relative left-6.5 top-2">99.99%</p>
-              <p className="text-gray-700 relative left-6 top-1.5 upperbox1-text">
+              <p className="text-gray-700 relative left-6 top-1.5 statisfied-box-text">
                 Statisfied Users
               </p>
             </div>
@@ -90,18 +174,16 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="h-17 w-54.5 bg-white relative top-88 right-3 upperbox1">
-        <div className="flex relative right-1">
-          <IoPeopleCircle className="h-13 w-13 relative left-3.5 top-2 text-[#9B59B6]" />
-          <div className="flex flex-col">
-            <p className="number relative left-5.5 top-2">4156+</p>
-            <p className="text-gray-700 relative left-5.5 top-1.5 upperbox1-text">
-              Popular Influencer
-            </p>
-            <ImCross className="cross relative top-35 left-18 text-[#9B59B6] size-18" />
-          </div>
+      <div className="h-17 w-50 bg-white relative top-88 flex items-center influencer-box">
+        <IoPeopleCircle className="h-13 w-13 relative left-2 text-[#9B59B6] people-icon" />
+        <div className="flex flex-col ml-5">
+          <p className="number relative right-2">4156+</p>
+          <p className="text-gray-700 relative bottom-1 right-2 influencer-box-text">
+            Popular Influencer
+          </p>
         </div>
       </div>
+      <ImCross className="absolute top-133 left-324 text-[#9B59B6] cross" />
     </div>
   );
 };
