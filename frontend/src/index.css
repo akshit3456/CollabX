@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 @import "tailwindcss";
 
 html,body{
-    background-image: url(https://web.moxcreative.com/influozy/wp-content/uploads/sites/26/2023/03/15782147_5671773.jpg);
+    padding: 0;
+    margin: 0;
     height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.inter-font{
+    font-family: "Inter Tight", serif;
+}
+
+.jost-font{
+    font-family: "Jost", serif;
+}
+.caveat-font{
+    font-family: "Caveat", serif;
+}
+  
