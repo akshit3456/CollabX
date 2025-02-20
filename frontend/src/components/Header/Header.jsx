@@ -28,15 +28,15 @@ const Header = () => {
         duration: 1,
         x: (i, target) =>
           target.classList.contains("box1")
-            ? -200
+            ? -150
             : target.classList.contains("box4")
-            ? 200
+            ? 150
             : 0,
         y: (i, target) =>
           target.classList.contains("box2")
-            ? 200
+            ? 150
             : target.classList.contains("box3")
-            ? -200
+            ? -150
             : 0,
       },
       "start"

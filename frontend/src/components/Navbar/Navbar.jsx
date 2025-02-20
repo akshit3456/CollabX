@@ -6,23 +6,22 @@ import { useState } from 'react'
 
 const Navbar = () => {
     const [menu, setMenu] = useState("HOME");
-    const [scroll,setScroll] = useState(false);
+    const [scroll,setScroll] = useState(window.scrollY > 100);
 
     useEffect(()=>{
         const handleScroll = () =>{
-            if (window.scrollY > 100){
-                setScroll(true);
-            }else{
-                setScroll(false);
-            }
+            setScroll(window.scrollY > 100);
         }
+
+        handleScroll();
+
         window.addEventListener('scroll',handleScroll);
         return () =>{
             window.removeEventListener('scroll',handleScroll);
         }
     },[])
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 h-20 transition-all duration-400 ${scroll ? 'scrolled' : ''}`}>
+    <div className={`fixed top-0 left-0 w-full z-30 h-20 transition-all duration-400 ${scroll ? 'scrolled' : ''}`}>
         <div className='flex gap-2 justify-between relative top-5 navbar'>
         <img className='h-12 pl-25 cursor-pointer relative top-1' src={assets.logo} alt="" />
         <ul className='flex gap-10 relative left-17 top-2 cursor-pointer jost-font'>

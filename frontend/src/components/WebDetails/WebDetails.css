@@ -11,3 +11,9 @@
 .border{
     border: 2px solid black;
 }
+
+.border-end{
+    border: 0.1px solid black;
+    width: 78rem;
+    justify-content: center;
+}
