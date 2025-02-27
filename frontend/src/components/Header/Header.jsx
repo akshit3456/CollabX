@@ -10,90 +10,26 @@ import { React } from "react";
 
 const Header = () => {
   useGSAP(() => {
-    const tl = gsap.timeline();
+  gsap.timeline()
+    .from(".heading1", { opacity: 0, y: 200, duration: 1 }, "start")
+    .from([".box1", ".box2", ".box3", ".box4"], {
+      opacity: 0,
+      duration: 1,
+      x: (i, target) => (target.classList.contains("box1") ? -150 : target.classList.contains("box4") ? 150 : 0),
+      y: (i, target) => (target.classList.contains("box2") ? 150 : target.classList.contains("box3") ? -150 : 0),
+    }, "start")
+    .from([".heading-text", ".triangles", ".influencer-box", ".diagonal-lines"], {
+      opacity: 0,
+      duration: 1,
+      x: (i, target) => (target.classList.contains("triangles") ? -90 : target.classList.contains("influencer-box") ? 90 : 0),
+      y: (i, target) => (target.classList.contains("heading-text") ? 90 : 0),
+      scale: (i, target) => (target.classList.contains("diagonal-lines") ? 0 : 1),
+    }, "-=0.7")
+    .from(".statisfied-box", { opacity: 0, x: -90, duration: 1 }, "-=0.9")
+    .from(".cross", { opacity: 0, y: 70, rotate: 120, duration: 0.8 }, "-=0.5")
+    .from(".discover-button", { opacity: 0, duration: 0.8 }, "-=0.6");
+}, []);
 
-    // First part (All elements animate together)
-    tl.from(
-      ".heading1",
-      {
-        opacity: 0,
-        y: 200, // Moves down from 200px
-        duration: 1,
-      },
-      "start"
-    ).from(
-      [".box1", ".box2", ".box3", ".box4"],
-      {
-        opacity: 0,
-        duration: 1,
-        x: (i, target) =>
-          target.classList.contains("box1")
-            ? -150
-            : target.classList.contains("box4")
-            ? 150
-            : 0,
-        y: (i, target) =>
-          target.classList.contains("box2")
-            ? 150
-            : target.classList.contains("box3")
-            ? -150
-            : 0,
-      },
-      "start"
-    );
-
-    // Second part (All elements animate together with a shorter delay after the first part)
-    tl.from(
-      [".heading-text", ".triangles", ".influencer-box", ".diagonal-lines"],
-      {
-        opacity: 0,
-        duration: 1,
-        x: (i, target) =>
-          target.classList.contains("triangles")
-            ? -90
-            : target.classList.contains("influencer-box")
-            ? 90
-            : 0,
-        y: (i, target) => (target.classList.contains("heading-text") ? 90 : 0),
-        scale: (i, target) =>
-          target.classList.contains("diagonal-lines") ? 0 : 1,
-      },
-      "-=0.7"
-    ); // Starts 0.7s earlier (overlaps slightly with first part for faster transition)
-
-    // ✅ Make .statisfied-box come from the left (-x axis)
-    tl.from(
-      ".statisfied-box",
-      {
-        opacity: 0,
-        x: -90, // Moves from the left (-X)
-        duration: 1,
-      },
-      "-=0.9"
-    ); // Overlaps a bit with the previous animations
-
-    // Cross animation (Happens almost immediately after the second part)
-    tl.from(
-      ".cross",
-      {
-        opacity: 0,
-        y: 70,
-        rotate: 120,
-        duration: 0.8, // Faster animation
-      },
-      "-=0.5"
-    ); // Overlaps slightly with second part
-
-    // Third part (All elements animate together with a very short delay)
-    tl.from(
-      ".discover-button",
-      {
-        opacity: 0,
-        duration: 0.8, // Faster appearance
-      },
-      "-=0.6"
-    ); // Starts 0.6s earlier to make the transition faster
-  });
   return (
     <div className="flex heading-start">
       <div className="relative left-357">

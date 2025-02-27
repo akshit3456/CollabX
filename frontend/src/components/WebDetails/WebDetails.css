@@ -1,19 +1,9 @@
-.no-of-brands{
-    font-size: 33px;
-    font-weight: 500;
-}
-
-.web-name{
-    font-weight: 600;
-    color: #9B59B6;
-}
-
 .border{
     border: 2px solid black;
 }
 
 .border-end{
-    border: 0.1px solid black;
+    border: 0.1px solid gray;
     width: 78rem;
     justify-content: center;
 }
